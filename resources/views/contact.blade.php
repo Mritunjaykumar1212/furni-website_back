@@ -40,19 +40,11 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home</a>
-						</li>
-						<li><a class="nav-link" href="shop.html">Shop</a></li>
-						<li><a class="nav-link" href="about.html">About us</a></li>
-						<li><a class="nav-link" href="services.html">Services</a></li>
-						<li><a class="nav-link" href="blog.html">Blog</a></li>
-						<li class="active"><a class="nav-link" href="contact.html">Contact us</a></li>
+					@include('header/nav')
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+					@include('header/nav_cart')
 					</ul>
 				</div>
 			</div>
@@ -133,34 +125,44 @@
                   </div> <!-- /.service -->
                 </div>
               </div>
+			  @if (session('success'))
+  <div class="alert alert-success">
+    {{ session('success') }}
+  </div>
+@endif
 
-              <form id="my_form_2_2002">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label class="text-black" for="fname">First name</label>
-                      <input type="text" class="form-control" id="fname_2002">
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label class="text-black" for="lname">Last name</label>
-                      <input type="text" class="form-control" id="lname_2002">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="text-black" for="email">Email address</label>
-                  <input type="email" class="form-control" id="email_2_2002">
-                </div>
+<form action="{{ route('submit.contact') }}" method="post" id="my_form_2_2002">
+  @csrf
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="fname">First name</label>
+        <input type="text" name="first_name" class="form-control" id="fname_2002" required>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="lname">Last name</label>
+        <input type="text" name="last_name" class="form-control" id="lname_2002" required>
+      </div>
+    </div>
+  </div>
 
-                <div class="form-group mb-5">
-                  <label class="text-black" for="message">Message</label>
-                  <textarea name="" class="form-control" id="message_2002" cols="30" rows="5"></textarea>
-                </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" name="email" class="form-control" id="email_2_2002" required>
+  </div>
 
-                <button type="submit" class="btn btn-primary-hover-outline">Send Message</button>
-              </form>
+  <div class="form-group mb-5">
+    <label for="message">Message</label>
+    <textarea name="message" class="form-control" id="message_2002" cols="30" rows="5" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary-hover-outline">Send Message</button>
+</form>
+
+
+
 			  <p id="error-msg" style="color: rgb(0, 0, 0);"></p>
 
 
@@ -205,10 +207,7 @@
 						<div class="row links-wrap">
 							<div class="col-6 col-sm-6 col-md-3">
 								<ul class="list-unstyled">
-									<li><a href="#">About us</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Contact us</a></li>
+								@include('header/nav')
 								</ul>
 							</div>
 
