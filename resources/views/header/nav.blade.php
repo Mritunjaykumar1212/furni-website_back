@@ -19,6 +19,10 @@
     @guest
         <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">Login</a>
+            <!-- <button class="nav-link btn btn-link" type="submit" onclick="openModal()" style="border: none; background: none;">Login</button> -->
+            @include('modal')
         </li>
     @endguest
 </ul>
+<!-- In your main layout or header -->
+

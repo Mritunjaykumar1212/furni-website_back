@@ -16,11 +16,12 @@
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
-		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-		<link href="css/tiny-slider.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ asset('css/tiny-slider.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/mritcustom.css') }}">
 		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
 	</head>
 
@@ -247,8 +248,8 @@
 
 		          <div class="row mb-5">
 		            <div class="col-md-12">
-		              <h2 class="h3 mb-3 text-black">Coupon Code</h2>
-		              <div class="p-3 p-lg-5 border bg-white">
+		              <!-- <h2 class="h3 mb-3 text-black">Coupon Code</h2> -->
+		              <!-- <div class="p-3 p-lg-5 border bg-white">
 
 		                <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
 		                <div class="input-group w-75 couponcode-wrap">
@@ -260,7 +261,7 @@
 
 		              </div>
 		            </div>
-		          </div>
+		          </div> -->
 
 		          <div class="row mb-5">
 		            <div class="col-md-12">
@@ -291,7 +292,7 @@
 		                  </tbody>
 		                </table>
 
-		                <div class="border p-3 mb-3">
+		                <!-- <div class="border p-3 mb-3">
 		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
 
 		                  <div class="collapse" id="collapsebank">
@@ -299,19 +300,9 @@
 		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
 		                    </div>
 		                  </div>
-		                </div>
+		                </div> -->
 
-		                <div class="border p-3 mb-3">
-		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
-
-		                  <div class="collapse" id="collapsecheque">
-		                    <div class="py-2">
-		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-		                    </div>
-		                  </div>
-		                </div>
-
-		                <div class="border p-3 mb-5">
+		                <!-- <div class="border p-3 mb-5">
 		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
 
 		                  <div class="collapse" id="collapsepaypal">
@@ -319,12 +310,22 @@
 		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
 		                    </div>
 		                  </div>
-		                </div>
+		                </div> -->
 
-		                <div class="form-group">
-		                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='thankyou.html'">Place Order</button>
-		                </div>
+		                
+						<div class="border p-3 mb-3">
+		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque"><div class="form-group">
+		                  <button class="btn btn-black btn-lg py-3 btn-block"id="rzp-button1">Place Order</button>
+		                </div></a></h3>
 
+		                  <div class="collapse" id="collapsecheque">
+		                    <div class="py-2">
+							<!-- <button class="btn-adi-2002  " id="rzp-button1">Make payment</button> -->
+							
+		                      <!-- <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p> -->
+		                    </div>
+		                  </div>
+		                </div>
 		              </div>
 		            </div>
 		          </div>
@@ -425,6 +426,35 @@
 
 			</div>
 		</footer>
+		<!-- Razorpay Checkout Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- Payment Button -->
+<button id="rzp-button1">Pay ₹500</button>
+
+<script>
+    var options = {
+        "key": "rzp_test_fjNXHuBNkmDGww", // 🔁 Yaha apna Razorpay Test Key ID daal
+        "amount": 50000, // Paise me likhna hota hai (50000 = ₹500)
+        "currency": "INR",
+        "name": "Furni Website",
+        "description": "Test Payment for Order #1234",
+        "image": "https://your-logo.com/logo.png", // optional
+        "handler": function (response){
+            alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+        },
+        "theme": {
+            "color": "#F37254"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        e.preventDefault();
+    }
+</script>
+
 		<!-- End Footer Section -->	
 
 
