@@ -27,7 +27,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/submit-contact', [FormController::class, 'submit'])->name('submit.contact');
 
 //  sirf login hone ke baad hi access honge
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['valid'::class])->group(function () {
     Route::view('/about', 'about')->name('about');
     Route::view('/shop', 'shop')->name('shop');
     Route::view('/blog', 'blog')->name('blog');
